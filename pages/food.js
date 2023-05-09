@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/Link";
 import Image from "next/Image";
 import { createClient } from 'contentful';
+import styles from '../styles/Gallery.module.css'
 
 export async function getStaticProps() {
   const client = createClient({
@@ -33,6 +34,7 @@ export default function Events({assets}) {
       <div className="food">
         {assets.map(asset => (
           <Image
+            className={styles.images}
             key={asset.sys.id}
             src={'https:' + asset.fields.file.url}
             height={asset.fields.file.details.image.height}
@@ -42,6 +44,13 @@ export default function Events({assets}) {
         ))}
 
       </div>
+
+      <style jsx>{`
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      `}</style>
       
     </>
   )
