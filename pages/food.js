@@ -37,6 +37,7 @@ export default function Events({assets}) {
             src={'https:' + asset.fields.file.url}
             height={asset.fields.file.details.image.height}
             width={asset.fields.file.details.image.width}
+            alt={asset.fields.title}
           />
         ))}
 

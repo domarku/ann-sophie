@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/Link';
+import Image from 'next/Image';
 
 const ImgComponent = () => (
   <Image
@@ -24,7 +24,7 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <p>Look at wonderful <Link href="/food">Food</Link></p>
+        <p>Look at wonderful <Link href="food">Food</Link></p>
         <ImgComponent></ImgComponent>
 
         <p className={styles.description}>
