@@ -15,8 +15,8 @@ const ImgComponent = () => (
 
 export async function getStaticProps() {
   const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+    space: "cfaebry355jl",
+    accessToken: "KodQsdZjAW0jrB7p_hPCV0W8TmzaR2lTsuMaJ8_ht8Y",
   })
 
   const res = await client.getEntries({ content_type: "homepage"})
