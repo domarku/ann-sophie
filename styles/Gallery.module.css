@@ -2,3 +2,8 @@
   max-width: 100%;
   height: auto;
 }
+
+.imageBox {
+  /* width: 400px; */
+  margin: 2rem 0;
+}

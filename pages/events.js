@@ -10,29 +10,29 @@ export async function getStaticProps() {
     accessToken: "KodQsdZjAW0jrB7p_hPCV0W8TmzaR2lTsuMaJ8_ht8Y",
   })
 
-  const res = await client.getAssets({ "metadata.tags.sys.id[in]" : "food"})
+  const res = await client.getAssets({ "metadata.tags.sys.id[in]" : "events"})
 
   return {
     props: {
-      assets: res.items
+      eventAssets: res.items
     }
   }
 
 }
 
-export default function Food({assets}) {
-  // console.log(assets)
+export default function Events({eventAssets}) {
+  console.log(eventAssets)
   return(
     <>
       <Head>
-        <title>Food</title>
+        <title>Events</title>
       </Head>
-      <h1>Food</h1>
+      <h1>Events</h1>
       <h2>
         <Link href="/">← Back to home</Link>
       </h2>
       <div className="food">
-        {assets.map(asset => (
+        {eventAssets.map(asset => (
           <div key={asset.sys.id} className={styles.imageBox}>
             <Image
               className={styles.images}
@@ -40,7 +40,6 @@ export default function Food({assets}) {
               height={asset.fields.file.details.image.height}
               width={asset.fields.file.details.image.width}
               alt={asset.fields.title}
-              quality={60}
             />
             <span>{asset.fields.title}</span>
           </div>

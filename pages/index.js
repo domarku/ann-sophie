@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { createClient } from 'contentful';
 
-const ImgComponent = () => (
-  <Image
-    src="/../public/images/profile.jpg"
-    height={144}
-    width={144}
-    alt="Profile picture"
-  />
-)
+// const ImgComponent = () => (
+//   <Image
+//     src="/../public/images/profile.jpg"
+//     height={144}
+//     width={144}
+//     alt="Profile picture"
+//   />
+// )
 
 export async function getStaticProps() {
   const client = createClient({
@@ -38,24 +38,20 @@ export default function Home({homepage}) {
       </Head>
 
       <main>
+        <ul className={styles.menu}>
+          <li><Link href="food">Food</Link></li>
+          <li><Link href="events">Events</Link></li>
+        </ul>
         <h1 className={styles.title}>
           {homepage[0].fields.title}
         </h1>
-        <p><Link href="food">Food</Link></p>
-        <p>{homepage[0].fields.description}</p>
-        <ImgComponent></ImgComponent>
+        <p className={styles.description}>{homepage[0].fields.description}</p>
+        {/* <ImgComponent></ImgComponent> */}
 
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-        </a>
+        © {new Date().getFullYear()} Ann-Sophie Raemisch, Nobelhart & Schmutzig
       </footer>
 
       <style jsx>{`
@@ -63,35 +59,13 @@ export default function Home({homepage}) {
           padding: 5rem 0;
           flex: 1;
           display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          flex-direction: inherit;
         }
         footer {
           width: 100%;
           height: 100px;
-          border-top: 1px solid #eaeaea;
+          margin: 1rem;
           display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
         }
       `}</style>
 
