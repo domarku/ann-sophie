@@ -1,5 +1,16 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+
+const ImgComponent = () => (
+  <Image
+    src="/../public/images/profile.jpg"
+    height={144}
+    width={144}
+    alt="Profile picture"
+  />
+)
 
 export default function Home() {
   return (
@@ -13,6 +24,8 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <p>Look at wonderful <Link href="/food">Food</Link></p>
+        <ImgComponent></ImgComponent>
 
         <p className={styles.description}>
           Get started by editing <code>pages/index.js</code>
