@@ -21,7 +21,7 @@ export async function getStaticProps() {
 }
 
 export default function Food({assets}) {
-  // console.log(assets)
+  console.log(assets)
   return(
     <>
       <Head>
@@ -41,6 +41,8 @@ export default function Food({assets}) {
               width={asset.fields.file.details.image.width}
               alt={asset.fields.title}
               quality={60}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={asset.sys.id === 0}
             />
             <span>{asset.fields.title}</span>
           </div>
@@ -48,10 +50,17 @@ export default function Food({assets}) {
 
       </div>
 
-      <style jsx>{`
-        img {
-          max-width: 100%;
-          height: auto;
+      <style jsx global>{`
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
+        }
+        * {
+          box-sizing: border-box;
         }
       `}</style>
       

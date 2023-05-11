@@ -1,17 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
-// import Image from 'next/image';
+import Image from 'next/image';
 import { createClient } from 'contentful';
-
-// const ImgComponent = () => (
-//   <Image
-//     src="/../public/images/profile.jpg"
-//     height={144}
-//     width={144}
-//     alt="Profile picture"
-//   />
-// )
 
 export async function getStaticProps() {
   const client = createClient({
@@ -29,45 +20,53 @@ export async function getStaticProps() {
 }
 
 export default function Home({homepage}) {
-  // console.log(homepage[0].fields.title)
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>{homepage[0].fields.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <ul className={styles.menu}>
-          <li><Link href="food">Food</Link></li>
-          <li><Link href="events">Events</Link></li>
-        </ul>
+      
+      <div className={styles.container}>
+        <header className={styles.menuHeader}>
+          <ul className={styles.menu}>
+            <li><Link href="food">Food</Link></li>
+            <li><Link href="events">Events</Link></li>
+          </ul>
+        </header>
+        
         <h1 className={styles.title}>
           {homepage[0].fields.title}
         </h1>
-        <p className={styles.description}>{homepage[0].fields.description}</p>
-        {/* <ImgComponent></ImgComponent> */}
+        
+        <div className={styles.description}>
+          <p>{homepage[0].fields.description}</p>
+        </div>
+        
+        <Image
+          className={styles.image}
+          src={'https:' + homepage[0].fields.headerImage.fields.file.url}
+          height={homepage[0].fields.headerImage.fields.file.details.image.height}
+          width={homepage[0].fields.headerImage.fields.file.details.image.width}
+          quality={80}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={true}
+          alt={homepage[0].fields.headerImage.fields.description}
+        />
 
-      </main>
+        <p className={styles.contact}>
+          <span>{homepage[0].fields.email + '@annsophieraemisch.com'}</span>
+          <span>
+            <a href="https://www.instagram.com/ansofija/?hl=en">Instagram</a>
+          </span>
+        </p>
 
-      <footer>
-        © {new Date().getFullYear()} Ann-Sophie Raemisch, Nobelhart & Schmutzig
-      </footer>
-
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: inherit;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          margin: 1rem;
-          display: flex;
-        }
-      `}</style>
+        <footer className={styles.copyright}>
+          <p>
+            <span>© {new Date().getFullYear()} Ann-Sophie Raemisch</span>
+          </p>
+        </footer>
+      </div>
 
       <style jsx global>{`
         html,
