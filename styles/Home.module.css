@@ -1,5 +1,5 @@
 .container {
-  max-width: 1440px;
+  /* max-width: 1440px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -7,14 +7,18 @@
     "title menu"
     "main-left main-right"
     "footer-left footer-right";
+  
   gap: 3rem;
   margin: 0 auto;
-  padding: 6rem 3rem;
+  padding: 2rem 3rem;
+  border: 1px solid red;
+  height: 100vh;
 }
 
 .title {
+  font-size: 1.5rem;
+  font-weight: 400;
   line-height: 1.15;
-  font-size: 3rem;
   grid-area: title;
   margin: 0;
 }
@@ -27,7 +31,7 @@
 }
 
 .menuHeader {
-  align-self: end;
+  /* align-self: end; */
 }
 
 .menu li {
@@ -39,35 +43,50 @@
 }
 
 .menu li a {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   color: #000;
 }
 
 .description {
-  grid-area: main-left;
+  grid-area: main-right;
   align-self: end;
   margin: 0;
 }
 
 .description p {
-  line-height: 1.5;
   font-size: 1.5rem;
+  line-height: 1.5;
   margin-bottom: 0;
 }
 
 .image {
   max-width: 100%;
   height: auto;
-  grid-area: main-right;
+  grid-area: main-left;
+  align-self: end;
 }
 
 .contact {
-  grid-area: footer-left;
+  grid-area: footer-right;
+}
+
+.contact span {
+  margin-right: 2rem;
+}
+
+.contact a {
+  text-decoration: none;
+  color: #000;
+}
+
+.icon {
+  height: 1rem;
+  vertical-align: bottom;
 }
 
 .copyright {
-  grid-area: footer-right;
+  grid-area: footer-left;
 }
 
 @media (max-width: 600px) {

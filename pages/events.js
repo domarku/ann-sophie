@@ -21,39 +21,53 @@ export async function getStaticProps() {
 }
 
 export default function Events({eventAssets}) {
-  console.log(eventAssets)
+  // console.log(eventAssets)
   return(
-    <>
+    <div className={styles.container}>
       <Head>
-        <title>Events</title>
+        <title>Ann-Sophie Raemisch — Food</title>
       </Head>
-      <h1>Events</h1>
-      <h2>
-        <Link href="/">← Back to home</Link>
-      </h2>
-      <div className="food">
-        {eventAssets.map(asset => (
-          <div key={asset.sys.id} className={styles.imageBox}>
-            <Image
-              className={styles.images}
-              src={'https:' + asset.fields.file.url}
-              height={asset.fields.file.details.image.height}
-              width={asset.fields.file.details.image.width}
-              alt={asset.fields.title}
-            />
-            <span>{asset.fields.title}</span>
-          </div>
-        ))}
 
-      </div>
+      <header className={styles.menuHeader}>
+        <ul className={styles.menu}>
+          <li><Link href="food">Food</Link></li>
+          <li><Link href="events">Events</Link></li>
+        </ul>
+      </header>
 
-      <style jsx>{`
-        img {
-          max-width: 100%;
-          height: auto;
+      <h1 className={styles.title}>
+        <Link href="/">Ann-Sophie Raemisch</Link>
+      </h1>
+        
+      {eventAssets.map(asset => (
+        <div key={asset.sys.id} className={styles.imageBox}>
+          <Image
+            className={styles.images}
+            src={'https:' + asset.fields.file.url}
+            height={asset.fields.file.details.image.height}
+            width={asset.fields.file.details.image.width}
+            alt={asset.fields.title}
+            quality={60}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={asset.sys.id === 0}
+          />
+        </div>
+      ))}
+
+      <style jsx global>{`
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
+        }
+        * {
+          box-sizing: border-box;
         }
       `}</style>
       
-    </>
+    </div>
   )
 }
