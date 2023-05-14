@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { createClient } from 'contentful';
 import styles from '../styles/Gallery.module.css'
+import { createClient } from 'contentful';
 
 export async function getStaticProps() {
   const client = createClient({
@@ -53,20 +53,6 @@ export default function Events({eventAssets}) {
           />
         </div>
       ))}
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
       
     </div>
   )

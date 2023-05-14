@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import styles from '../styles/Home.module.css';
 import { createClient } from 'contentful';
 
 export async function getStaticProps() {
@@ -25,17 +25,20 @@ export default function Home({homepage}) {
       <Head>
         <title>{homepage[0].fields.title}</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet" />
       </Head>
       
-      <div className={styles.container}>
-        <header className={styles.menuHeader}>
-          <ul className={styles.menu}>
+      <div className="container">
+        <header>
+          <ul className="menu">
             <li><Link href="food">Food</Link></li>
             <li><Link href="events">Events</Link></li>
           </ul>
         </header>
         
-        <h1 className={styles.title}>
+        <h1 className="title">
           {homepage[0].fields.title}
         </h1>
         
@@ -84,19 +87,6 @@ export default function Home({homepage}) {
         </footer>
       </div>
 
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   )
 }

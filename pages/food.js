@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { createClient } from 'contentful';
 import styles from '../styles/Gallery.module.css'
+import { createClient } from 'contentful';
 
 export async function getStaticProps() {
   const client = createClient({
@@ -23,21 +23,27 @@ export async function getStaticProps() {
 export default function Food({assets, homepage}) {
   // console.log(assets)
   return(
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Ann-Sophie Raemisch — Food</title>
       </Head>
 
-      <header className={styles.menuHeader}>
-        <ul className={styles.menu}>
+      <header>
+        <ul className="menu">
           <li><Link href="food">Food</Link></li>
           <li><Link href="events">Events</Link></li>
         </ul>
       </header>
 
-      <h1 className={styles.title}>
+      <h1 className="title">
         <Link href="/">Ann-Sophie Raemisch</Link>
       </h1>
+      
+      <footer className={styles.copyright}>
+        <p>
+          <span>All images © {new Date().getFullYear()} Ann-Sophie Raemisch</span>
+        </p>
+      </footer>
 
       {assets.map(asset => (
         <div key={asset.sys.id}>
@@ -51,23 +57,9 @@ export default function Food({assets, homepage}) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={asset.sys.id === 0}
           />
-          <span>{asset.fields.title}</span>
+          <span className={styles.imageDescription}>{asset.fields.title}</span>
         </div>
       ))}
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
       
     </div>
   )
