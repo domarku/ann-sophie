@@ -1,8 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
+import Header from './header'
 import styles from '../styles/Gallery.module.css'
-import { createClient } from 'contentful';
+import Head from "next/head"
+import Link from "next/link"
+import Image from "next/image"
+import { createClient } from 'contentful'
 
 export async function getStaticProps() {
   const client = createClient({
@@ -17,7 +18,6 @@ export async function getStaticProps() {
       assets: res.items
     }
   }
-
 }
 
 export default function Food({assets, homepage}) {
@@ -28,23 +28,8 @@ export default function Food({assets, homepage}) {
         <title>Ann-Sophie Raemisch — Food</title>
       </Head>
 
-      <header>
-        <ul className="menu">
-          <li><Link href="food">Food</Link></li>
-          <li><Link href="events">Events</Link></li>
-        </ul>
-      </header>
-
-      <h1 className="title">
-        <Link href="/">Ann-Sophie Raemisch</Link>
-      </h1>
+      <Header></Header>
       
-      <footer className={styles.copyright}>
-        <p>
-          <span>All images © {new Date().getFullYear()} Ann-Sophie Raemisch</span>
-        </p>
-      </footer>
-
       {assets.map(asset => (
         <div key={asset.sys.id}>
           <Image
@@ -53,14 +38,20 @@ export default function Food({assets, homepage}) {
             height={asset.fields.file.details.image.height}
             width={asset.fields.file.details.image.width}
             alt={asset.fields.title}
-            quality={60}
+            quality={70}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={asset.sys.id === 0}
           />
-          <span className={styles.imageDescription}>{asset.fields.title}</span>
+          {/* <span className={styles.imageDescription}>{asset.fields.title}</span> */}
         </div>
       ))}
-      
+
+      <footer className={styles.copyright}>
+        <p>
+          <span>©{new Date().getFullYear()} Ann-Sophie Raemisch</span>
+        </p>
+      </footer>
+
     </div>
   )
 }

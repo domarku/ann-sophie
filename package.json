@@ -6,7 +6,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next/font": "^13.4.2",
     "contentful": "^10.1.8",
     "next": "latest",
     "react": "18.2.0",

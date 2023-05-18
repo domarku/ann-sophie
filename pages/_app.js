@@ -1,5 +1,5 @@
-import '../styles/global.css';
-import {Amiri} from '@next/font/google'
+import '../styles/global.css'
+import {Amiri} from "next/font/google"
 
 const amiri = Amiri({
   subsets: ['latin'],

@@ -1,8 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
+import Header from './header'
 import styles from '../styles/Gallery.module.css'
-import { createClient } from 'contentful';
+import Head from "next/head"
+import Link from "next/link"
+import Image from "next/image"
+import { createClient } from 'contentful'
 
 export async function getStaticProps() {
   const client = createClient({
@@ -17,30 +18,20 @@ export async function getStaticProps() {
       eventAssets: res.items
     }
   }
-
 }
 
 export default function Events({eventAssets}) {
   // console.log(eventAssets)
   return(
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Ann-Sophie Raemisch — Food</title>
       </Head>
 
-      <header className={styles.menuHeader}>
-        <ul className={styles.menu}>
-          <li><Link href="food">Food</Link></li>
-          <li><Link href="events">Events</Link></li>
-        </ul>
-      </header>
-
-      <h1 className={styles.title}>
-        <Link href="/">Ann-Sophie Raemisch</Link>
-      </h1>
+      <Header></Header>
         
       {eventAssets.map(asset => (
-        <div key={asset.sys.id} className={styles.imageBox}>
+        <div key={asset.sys.id}>
           <Image
             className={styles.images}
             src={'https:' + asset.fields.file.url}

@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import Header from './header';
 import Link from 'next/link';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import { createClient } from 'contentful';
+import styles from '../styles/Home.module.css'
+import Image from 'next/image'
+import { createClient } from 'contentful'
 
 export async function getStaticProps() {
   const client = createClient({
@@ -14,7 +15,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      homepage: res.items
+      homepage: res.items 
     }
   }
 }
@@ -25,22 +26,10 @@ export default function Home({homepage}) {
       <Head>
         <title>{homepage[0].fields.title}</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet" />
       </Head>
       
       <div className="container">
-        <header>
-          <ul className="menu">
-            <li><Link href="food">Food</Link></li>
-            <li><Link href="events">Events</Link></li>
-          </ul>
-        </header>
-        
-        <h1 className="title">
-          {homepage[0].fields.title}
-        </h1>
+        <Header></Header>
         
         <div className={styles.description}>
           <p>{homepage[0].fields.description}</p>
@@ -82,7 +71,7 @@ export default function Home({homepage}) {
 
         <footer className={styles.copyright}>
           <p>
-            <span>© {new Date().getFullYear()} Ann-Sophie Raemisch</span>
+            <span>©{new Date().getFullYear()} Ann-Sophie Raemisch</span>
           </p>
         </footer>
       </div>

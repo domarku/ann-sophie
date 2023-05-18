@@ -64,7 +64,7 @@ ul {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 40vw;
   grid-template-rows: 10%;
   grid-template-areas:
   "title menu"
